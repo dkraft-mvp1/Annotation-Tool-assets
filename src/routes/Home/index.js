@@ -43,12 +43,13 @@ export default function ContactUs () {
     })
     if (res.status === 200) {
       const questiondoc = res.data.questionData
-      setContext(questiondoc.context)
-      setNoOfQue(questiondoc.index)
-      setAnswer(questiondoc.answer)
-      setQuestion(questiondoc.question)
-      setStartAnswer(questiondoc.answer_start)
-      setEndAnswer(questiondoc.answer.length + questiondoc.answer_start)
+      console.log('successfully updated')
+      // setContext(questiondoc.context)
+      // setNoOfQue(questiondoc.index)
+      // setAnswer(questiondoc.answer)
+      // setQuestion(questiondoc.question)
+      // setStartAnswer(questiondoc.answer_start)
+      // setEndAnswer(questiondoc.answer.length + questiondoc.answer_start)
     } else {
       alert('index not found code 2043')
     }
@@ -76,7 +77,7 @@ export default function ContactUs () {
         if ((questiondoc.validated != null) || (questiondoc.validated !== undefined)) {
           setAgree(questiondoc.validated)
         } else {
-          setAgree(false)
+          setAgree(true)
         }
       } else {
         alert('index not found code 2043')
@@ -143,6 +144,10 @@ export default function ContactUs () {
   const handleSubmit = async (e) => {
     e.preventDefault()
     updateQuestion(noOfQue)
+    const val = noOfQue + 1
+    const nval = Number(val)
+    setNoOfQue(nval)
+    getQuestion(nval)
   }
 
   const handleContextArea = async (e) => {
